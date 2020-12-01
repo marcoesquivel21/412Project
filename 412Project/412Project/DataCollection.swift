@@ -9,14 +9,14 @@ import Foundation
 
 struct StateStuffElement: Codable {
     public let id: String
-    public let totalTestResults: Int?
-    public let death: Int?
-    public let positiveIncrease, negativeIncrease, total: Int?
+    public let tests: Int?
+    public let deaths: Int?
+    public let positiveIncrease, negativeIncrease, cases: Int?
 }
 
 struct CountryStuffElement: Codable{
     public let id: String
-    public let totalTests: Int?
+    public let tests: Int?
     public let deaths: Int?
     public let casesPerOneMillion: Int?
     public let deathsPerOneMillion: Int?

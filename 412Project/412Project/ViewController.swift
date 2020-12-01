@@ -17,6 +17,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 //
 //    typealias StateStuff = [StateStuffElement]
     
+    @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var segmentedPick: UISegmentedControl!
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var listOfStuffPicker: UIPickerView!
@@ -67,14 +68,19 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     l.text = "Deaths: \(countryList[row].deaths!)"
                 case 5:
                     l.text = "Deaths Per One Million: \(countryList[row].deathsPerOneMillion!)"
+                    l.isHidden = false
                 case 6:
                     l.text = "Tests Per One Million: \(countryList[row].testsPerOneMillion!)"
+                    l.isHidden = false
                 case 7:
                     l.text = "Today Cases: \(countryList[row].todayCases!)"
+                    l.isHidden = false
                 case 8:
                     l.text = "Today Deaths: \(countryList[row].todayDeaths!)"
+                    l.isHidden = false
                 case 9:
                     l.text = "Tests: \(countryList[row].tests!)"
+                    l.isHidden = false
                 default:
                     print("error")
                 }
@@ -125,149 +131,150 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Do any additional setup after loading the view.
     }
     
-    func loadInAPI(){
-        self.loadState()
-        self.loadCountry()
-    }
+//    func loadInAPI(){
+//        self.loadState()
+//        self.loadCountry()
+//    }
     
-    func loadState(){
-        let urlAsString = "https://api.covidtracking.com/v1/states/current.json"
-        
-        let url = URL(string: urlAsString)!
-        let urlSession = URLSession.shared
-        
-        let jsonQuery = urlSession.dataTask(with: url, completionHandler: { data, response, error -> Void in
-                           if (error != nil) {
-                       print(error!.localizedDescription)
-                           }
-            var err: NSError?
-            let decoder = JSONDecoder()
-            if data == nil{
-            }
-            let jsonResult = try! decoder.decode(StateStuff.self, from: data!)
-            if (err != nil)
-            {
-                print("Error JS\(err!.localizedDescription)")
-            }
-            let len = jsonResult.count
-            for index in 0..<len{
-                //var abr = jsonResult[index].state
-                //print(abr)
-                //self.loadDayStats(name: abr)
-                var cases = jsonResult[index].total
-                var negIn = jsonResult[index].negativeIncrease
-                var posIn = jsonResult[index].positiveIncrease
-                var deaths = jsonResult[index].death
-                var tests = jsonResult[index].totalTestResults
-                
-                
-                //self.stateList.append(State(a:abr, c:cases, ni:negIn, pi:posIn, d:deaths, t:tests))
-                
-            }
-         
-         
-        })
-        jsonQuery.resume()
-    }
+//    func loadState(){
+//        let urlAsString = "https://api.covidtracking.com/v1/states/current.json"
+//
+//        let url = URL(string: urlAsString)!
+//        let urlSession = URLSession.shared
+//
+//        let jsonQuery = urlSession.dataTask(with: url, completionHandler: { data, response, error -> Void in
+//                           if (error != nil) {
+//                       print(error!.localizedDescription)
+//                           }
+//            var err: NSError?
+//            let decoder = JSONDecoder()
+//            if data == nil{
+//            }
+//            let jsonResult = try! decoder.decode(StateStuff.self, from: data!)
+//            if (err != nil)
+//            {
+//                print("Error JS\(err!.localizedDescription)")
+//            }
+//            let len = jsonResult.count
+//            print(jsonResult[0].death)
+//            for index in 0..<len{
+//                //var abr = jsonResult[index].state
+//                //print(abr)
+//                //self.loadDayStats(name: abr)
+//                var cases = jsonResult[index].total
+//                var negIn = jsonResult[index].negativeIncrease
+//                var posIn = jsonResult[index].positiveIncrease
+//                var deaths = jsonResult[index].death
+//                var tests = jsonResult[index].totalTestResults
+//
+//
+//                //self.stateList.append(State(a:abr, c:cases, ni:negIn, pi:posIn, d:deaths, t:tests))
+//
+//            }
+//
+//
+//        })
+//        jsonQuery.resume()
+//    }
     
-    func loadCountry(){
-        let urlAsString = "https://coronavirus-19-api.herokuapp.com/countries"
-        
-        let url = URL(string: urlAsString)!
-        let urlSession = URLSession.shared
-        
-        let jsonQuery = urlSession.dataTask(with: url, completionHandler: { data, response, error -> Void in
-                           if (error != nil) {
-                       print(error!.localizedDescription)
-                           }
-            var err: NSError?
-            let decoder = JSONDecoder()
-            if data == nil{
-            }
-            let jsonResult = try! decoder.decode(CountryStuff.self, from: data!)
-            if (err != nil)
-            {
-                print("Error JS\(err!.localizedDescription)")
-            }
-            let len = jsonResult.count
-            for index in 0..<len{
-                //var country = jsonResult[index].country
-                var tests = jsonResult[index].totalTests
-                var deaths = jsonResult[index].deaths
-                var cpom = jsonResult[index].casesPerOneMillion
-                var dpom = jsonResult[index].deathsPerOneMillion
-                var active = jsonResult[index].active
-                var crit = jsonResult[index].critical
-                var td = jsonResult[index].todayDeaths
-                var tpom = jsonResult[index].testsPerOneMillion
-                var tc = jsonResult[index].todayCases
-                var cases = jsonResult[index].cases
-                
-                
-                
-                //self.countryList.append(Country(n:country, d:deaths ?? 0, cpom:cpom ?? 0, c:cases ?? 0, a:active ?? 0, crit:crit ?? 0, td: td ?? 0, dpom: dpom ?? 0, tpom:tpom ?? 0, tc:tc ?? 0))
-            }
-            
-            DispatchQueue.main.async{
-                self.reloadList()
-                self.listOfStuffPicker.reloadAllComponents()
-            }
-            
-         
-         
-        })
-        jsonQuery.resume()
-    }
+//    func loadCountry(){
+//        let urlAsString = "https://coronavirus-19-api.herokuapp.com/countries"
+//
+//        let url = URL(string: urlAsString)!
+//        let urlSession = URLSession.shared
+//
+//        let jsonQuery = urlSession.dataTask(with: url, completionHandler: { data, response, error -> Void in
+//                           if (error != nil) {
+//                       print(error!.localizedDescription)
+//                           }
+//            var err: NSError?
+//            let decoder = JSONDecoder()
+//            if data == nil{
+//            }
+//            let jsonResult = try! decoder.decode(CountryStuff.self, from: data!)
+//            if (err != nil)
+//            {
+//                print("Error JS\(err!.localizedDescription)")
+//            }
+//            let len = jsonResult.count
+//            for index in 0..<len{
+//                //var country = jsonResult[index].country
+//                var tests = jsonResult[index].totalTests
+//                var deaths = jsonResult[index].deaths
+//                var cpom = jsonResult[index].casesPerOneMillion
+//                var dpom = jsonResult[index].deathsPerOneMillion
+//                var active = jsonResult[index].active
+//                var crit = jsonResult[index].critical
+//                var td = jsonResult[index].todayDeaths
+//                var tpom = jsonResult[index].testsPerOneMillion
+//                var tc = jsonResult[index].todayCases
+//                var cases = jsonResult[index].cases
+//
+//
+//
+//                //self.countryList.append(Country(n:country, d:deaths ?? 0, cpom:cpom ?? 0, c:cases ?? 0, a:active ?? 0, crit:crit ?? 0, td: td ?? 0, dpom: dpom ?? 0, tpom:tpom ?? 0, tc:tc ?? 0))
+//            }
+//
+//            DispatchQueue.main.async{
+//                self.reloadList()
+//                self.listOfStuffPicker.reloadAllComponents()
+//            }
+//
+//
+//
+//        })
+//        jsonQuery.resume()
+//    }
     
-    func loadDayStats(name: String){
-        let urlAsString = "https://api.covidtracking.com/v1/states/" + name + "/daily.json"
-        
-        let url = URL(string: urlAsString)!
-        let urlSession = URLSession.shared
-        
-        let jsonQuery = urlSession.dataTask(with: url, completionHandler: { data, response, error -> Void in
-                           if (error != nil) {
-                       print(error!.localizedDescription)
-                           }
-            var err: NSError?
-            let decoder = JSONDecoder()
-            if data == nil{
-            }
-            let jsonResult = try! decoder.decode(DayStatStuff.self, from: data!)
-            if (err != nil)
-            {
-                print("Error JS\(err!.localizedDescription)")
-            }
-            for index in 0..<7{
-                var d = jsonResult[index].date
-                //var s = jsonResult[index].state
-                //print(s)
-                var h = jsonResult[index].hospitalized
-                var icu = jsonResult[index].inIcuCumulative
-                var pos = jsonResult[index].positive
-                var neg = jsonResult[index].negative
-                
-                
-                //self.dayStatList.append(DayStat(d: d ?? 0, a: s, h: h ?? 0, icu: icu ?? 0, p: pos ?? 0, n: neg ?? 0))
-            }
-            
-            DispatchQueue.main.async{
-                self.reloadList()
-                self.listOfStuffPicker.reloadAllComponents()
-                //print(self.dayStatList.getCount())
-                print(self.dayStatList.count)
-            }
-         
-        })
-        jsonQuery.resume()
-    }
-    
+//    func loadDayStats(name: String){
+//        let urlAsString = "https://api.covidtracking.com/v1/states/" + name + "/daily.json"
+//
+//        let url = URL(string: urlAsString)!
+//        let urlSession = URLSession.shared
+//
+//        let jsonQuery = urlSession.dataTask(with: url, completionHandler: { data, response, error -> Void in
+//                           if (error != nil) {
+//                       print(error!.localizedDescription)
+//                           }
+//            var err: NSError?
+//            let decoder = JSONDecoder()
+//            if data == nil{
+//            }
+//            let jsonResult = try! decoder.decode(DayStatStuff.self, from: data!)
+//            if (err != nil)
+//            {
+//                print("Error JS\(err!.localizedDescription)")
+//            }
+//            for index in 0..<7{
+//                var d = jsonResult[index].date
+//                //var s = jsonResult[index].state
+//                //print(s)
+//                var h = jsonResult[index].hospitalized
+//                var icu = jsonResult[index].inIcuCumulative
+//                var pos = jsonResult[index].positive
+//                var neg = jsonResult[index].negative
+//
+//
+//                //self.dayStatList.append(DayStat(d: d ?? 0, a: s, h: h ?? 0, icu: icu ?? 0, p: pos ?? 0, n: neg ?? 0))
+//            }
+//
+//            DispatchQueue.main.async{
+//                self.reloadList()
+//                self.listOfStuffPicker.reloadAllComponents()
+//                //print(self.dayStatList.getCount())
+//                print(self.dayStatList.count)
+//            }
+//
+//        })
+//        jsonQuery.resume()
+//    }
+//
     func loadDayStatsDB(){
         let urlAsString = "http://127.0.0.1:8080/daystats"
-        
+
         let url = URL(string: urlAsString)!
         let urlSession = URLSession.shared
-        
+
         let jsonQuery = urlSession.dataTask(with: url, completionHandler: { data, response, error -> Void in
                            if (error != nil) {
                        print(error!.localizedDescription)
@@ -289,19 +296,19 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 var icu = jsonResult[index].inIcuCumulative
                 var pos = jsonResult[index].positive
                 var neg = jsonResult[index].negative
-                
+
                 //self.dayStatList.addDayStatObj(d: d ?? 0, a: s, h: h ?? 0, icu: icu ?? 0, p: pos ?? 0, n: neg ?? 0)
                 //var temp = DayStat()
                 self.dayStatList.append(DayStat(d: d!, a: s, h: h ?? 0, icu: icu ?? 0, p: pos ?? 0, n: neg ?? 0))
             }
-            
+
             DispatchQueue.main.async{
                 self.reloadList()
                 self.listOfStuffPicker.reloadAllComponents()
                 //print(self.dayStatList.getCount())
                 print(self.dayStatList.count)
             }
-         
+
         })
         jsonQuery.resume()
     }
@@ -328,7 +335,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             let len = jsonResult.count
             for index in 0..<len{
                 var country = jsonResult[index].id
-                var tests = jsonResult[index].totalTests
+                var tests = jsonResult[index].tests
                 var deaths = jsonResult[index].deaths
                 var cpom = jsonResult[index].casesPerOneMillion
                 var dpom = jsonResult[index].deathsPerOneMillion
@@ -375,15 +382,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 print("Error JS\(err!.localizedDescription)")
             }
             let len = jsonResult.count
+            //print(jsonResult[0].death)
             for index in 0..<len{
                 var abr = jsonResult[index].id
                 print(abr)
                 //self.loadDayStats(name: abr)
-                var cases = jsonResult[index].total
+                var cases = jsonResult[index].cases
                 var negIn = jsonResult[index].negativeIncrease
                 var posIn = jsonResult[index].positiveIncrease
-                var deaths = jsonResult[index].death
-                var tests = jsonResult[index].totalTestResults
+                var deaths = jsonResult[index].deaths
+                var tests = jsonResult[index].tests
                 
                 //self.stateList.addStateObj(name: abr, c: cases, ni: negIn, pi: posIn, d: deaths, t: tests)
                 self.stateList.append(State(a:abr, c:cases ?? 0, ni:negIn ?? 0, pi:posIn ?? 0, d:deaths ?? 0, t:tests ?? 0))
@@ -444,6 +452,77 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBAction func segDidChange(_ sender: Any) {
         reloadList()
+        for l in descriptionlbls{
+            if segmentedPick.selectedSegmentIndex == 0{
+                detailButton.isHidden = true
+                print(l.tag)
+                switch l.tag {
+                case 0:
+                    l.text = "Cases:  \(countryList[0].cases!)"
+                case 1:
+                    l.text = "Active: \(countryList[0].active!)"
+                case 2:
+                    l.text = "Cases Per One Million: \(countryList[0].casesPerOneMillion!)"
+                case 3:
+                    l.text = "Critical: \(countryList[0].critical!)"
+                case 4:
+                    l.text = "Deaths: \(countryList[0].deaths!)"
+                case 5:
+                    l.text = "Deaths Per One Million: \(countryList[0].deathsPerOneMillion!)"
+                    l.isHidden = false
+                case 6:
+                    l.text = "Tests Per One Million: \(countryList[0].testsPerOneMillion!)"
+                    l.isHidden = false
+                case 7:
+                    l.text = "Today Cases: \(countryList[0].todayCases!)"
+                    l.isHidden = false
+                case 8:
+                    l.text = "Today Deaths: \(countryList[0].todayDeaths!)"
+                    l.isHidden = false
+                case 9:
+                    l.text = "Tests: \(countryList[0].tests!)"
+                    l.isHidden = false
+                default:
+                    print("error")
+                }
+            }
+            else{
+//                print(l.tag)
+                detailButton.isHidden = false
+                switch l.tag {
+                case 0:
+                    l.text = "Cases:  \(stateList[0].cases ?? 0)"
+                case 1:
+                    l.text = "Negative Increase: \(stateList[0].negativeIncrease ?? 0)"
+                case 2:
+                    l.text = "Positive Increase: \(stateList[0].positiveIncrease ?? 0)"
+                case 3:
+                    l.text = "Deaths: \(stateList[0].deaths ?? 0)"
+                case 4:
+                    l.text = "Tests: \(stateList[0].tests ?? 0)"
+                case 5:
+                    l.isHidden = true
+                case 6:
+                    l.isHidden = true
+                case 7:
+                    l.isHidden = true
+                case 8:
+                    l.isHidden = true
+                case 9:
+                    l.isHidden = true
+                default:
+                    print("error")
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail"{
+            if let vc = segue.destination as? StateDetailViewController{
+                vc.state = NameLabel.text
+            }
+        }
     }
     
 }
