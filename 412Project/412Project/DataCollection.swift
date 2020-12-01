@@ -14,6 +14,8 @@ struct StateStuffElement: Codable {
     public let positiveIncrease, negativeIncrease, cases: Int?
 }
 
+//testsefdsfadsfasdfashdflasjkhflasdhflsjdhflkjsdhflasdhfk
+
 struct CountryStuffElement: Codable{
     public let id: String
     public let tests: Int?
