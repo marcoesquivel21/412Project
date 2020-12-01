@@ -14,5 +14,13 @@ func routes(_ app: Application) throws {
         daystats.query(on: req.db).all()
     }
     
+    app.post("addState") { req -> EventLoopFuture<state> in
+        let stateIn = try req.content.decode(state.self)
+        return stateIn.create(on: req.db).map {stateIn}
+    }
     
+    app.post("addCountry") { req -> EventLoopFuture<country> in
+        let countryIn = try req.content.decode(country.self)
+        return countryIn.create(on: req.db).map {countryIn}
+    }
 }
