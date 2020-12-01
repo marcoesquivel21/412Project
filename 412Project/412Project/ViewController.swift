@@ -56,48 +56,55 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 print(l.tag)
                 switch l.tag {
                 case 0:
-                    l.text = "Cases:  \(countryList[row].cases)"
+                    l.text = "Cases:  \(countryList[row].cases!)"
                 case 1:
-                    l.text = "Active: \(countryList[row].active)"
+                    l.text = "Active: \(countryList[row].active!)"
                 case 2:
-                    l.text = "Cases Per One Million: \(countryList[row].casesPerOneMillion)"
+                    l.text = "Cases Per One Million: \(countryList[row].casesPerOneMillion!)"
                 case 3:
-                    l.text = "Critical: \(countryList[row].critical)"
+                    l.text = "Critical: \(countryList[row].critical!)"
                 case 4:
-                    l.text = "Deaths: \(countryList[row].deaths)"
+                    l.text = "Deaths: \(countryList[row].deaths!)"
                 case 5:
-                    l.text = "Deaths Per One Million: \(countryList[row].deathsPerOneMillion)"
+                    l.text = "Deaths Per One Million: \(countryList[row].deathsPerOneMillion!)"
                 case 6:
-                    l.text = "Tests Per One Million: \(countryList[row].testsPerOneMillion)"
+                    l.text = "Tests Per One Million: \(countryList[row].testsPerOneMillion!)"
                 case 7:
-                    l.text = "Today Cases: \(countryList[row].todayCases)"
+                    l.text = "Today Cases: \(countryList[row].todayCases!)"
                 case 8:
-                    l.text = "Today Deaths: \(countryList[row].todayDeaths)"
+                    l.text = "Today Deaths: \(countryList[row].todayDeaths!)"
                 case 9:
-                    l.text = "Tests: \(countryList[row].tests)"
+                    l.text = "Tests: \(countryList[row].tests!)"
                 default:
                     print("error")
                 }
             }
             else{
-//                switch l.tag {
-//                case 0:
-//                case 1:
-//                case 2:
-//                case 3:
-//                case 4:
-//                case 5:
-//                case 6:
-//                    l.isHidden = true
-//                case 7:
-//                    l.isHidden = true
-//                case 8:
-//                    l.isHidden = true
-//                case 9:
-//                    l.isHidden = true
-//                default:
-//                    print("error")
-//                }
+//                print(l.tag)
+                switch l.tag {
+                case 0:
+                    l.text = "Cases:  \(stateList[row].cases ?? 0)"
+                case 1:
+                    l.text = "Negative Increase: \(stateList[row].negativeIncrease ?? 0)"
+                case 2:
+                    l.text = "Positive Increase: \(stateList[row].positiveIncrease ?? 0)"
+                case 3:
+                    l.text = "Deaths: \(stateList[row].deaths ?? 0)"
+                case 4:
+                    l.text = "Tests: \(stateList[row].tests ?? 0)"
+                case 5:
+                    l.isHidden = true
+                case 6:
+                    l.isHidden = true
+                case 7:
+                    l.isHidden = true
+                case 8:
+                    l.isHidden = true
+                case 9:
+                    l.isHidden = true
+                default:
+                    print("error")
+                }
             }
         }
     }
