@@ -78,6 +78,8 @@ class AddViewController: UIViewController {
     func insertCountry(id: String, tests: String, deaths: String, casesMilli: String, cases: String, active: String, critical: String, deathsToday: String, deathsMilli: String, testsMilli:String, casesToday: String){
         
         
+        
+        
         let url = URL(string: "http://127.0.0.1:8080/addCountry/\(id)/\(tests)/\(deaths)/\(casesMilli)/\(deathsMilli)/\(active)/\(critical)/\(deathsToday)/\(testsMilli)/\(casesToday)/\(cases)")
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"

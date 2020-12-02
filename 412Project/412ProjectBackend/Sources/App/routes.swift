@@ -67,5 +67,39 @@ func routes(_ app: Application) throws {
             return stats
         }
     
+    app.get("updateCountry", ":name", ":tests", ":deaths", ":casesPerOneM", ":deathsPerOneM", ":active", ":critical", ":todayDeaths", ":testsPerOneM", ":todayCases", ":cases") { req -> EventLoopFuture<[country]> in
+            let name = req.parameters.get("name") ?? "invalid"
+            let tests = Int(req.parameters.get("tests") ?? "0")
+            let deaths = Int(req.parameters.get("deaths") ?? "0")
+            let casesPerOneM = Int(req.parameters.get("casesPerOneM") ?? "0")
+            let deathsPerOneM = Int(req.parameters.get("deathsPerOneM") ?? "0")
+            let active = Int(req.parameters.get("active") ?? "0")
+            let critical = Int(req.parameters.get("critical") ?? "0")
+            let todayDeaths = Int(req.parameters.get("todayDeaths") ?? "0")
+            let testsPerOneM = Int(req.parameters.get("testsPerOneM") ?? "0")
+            let todayCases = Int(req.parameters.get("todayCases") ?? "0")
+            let cases = Int(req.parameters.get("cases") ?? "0")
+            
+            country.query(on: req.db)
+                .set(\.$tests, to: tests)
+                .set(\.$deaths, to: deaths)
+                .set(\.$casesPerOneMillion, to: casesPerOneM)
+                .set(\.$deathsPerOneMillion, to: deathsPerOneM)
+                .set(\.$active, to: active)
+                .set(\.$critical, to: critical)
+                .set(\.$todayDeaths, to: todayDeaths)
+                .set(\.$testsPerOneMillion, to: testsPerOneM)
+                .set(\.$todayCases, to: todayCases)
+                .set(\.$cases, to: cases)
+                .filter(\.$id ~~ name)
+                .update()
+            
+            let newCountry = country.query(on: req.db)
+                .filter(\.$id == name).all()
+            
+            return newCountry
+            
+        }
+    
 
 }
