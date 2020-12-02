@@ -12,7 +12,8 @@ class UpdateViewController: UIViewController {
     var selectedVal:Int?
     var id:String?
     
-    @IBOutlet weak var currentId: UILabel!
+    @IBOutlet weak var navbar: UINavigationBar!
+    
     @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var countryTestsText: UITextField!
@@ -29,8 +30,7 @@ class UpdateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentId.text = id
-        currentId.sizeToFit()
+        navbar.topItem?.title = id
         if selectedVal == 1{
             errorLabel.text = "Please go back and select a country"
             countryTestsText.isHidden = true

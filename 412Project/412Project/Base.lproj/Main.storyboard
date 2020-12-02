@@ -22,7 +22,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="4hB-5i-YFG">
-                                        <barButtonItem key="leftBarButtonItem" title="Delete" id="IQn-7H-RX9"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Delete" id="IQn-7H-RX9">
+                                            <connections>
+                                                <action selector="deleteCountryAction:" destination="BYZ-38-t0r" id="Ecb-u3-W8E"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Insert" id="N2W-oq-9qj">
                                             <connections>
                                                 <segue destination="hpD-sV-80a" kind="show" identifier="add" id="Tsz-Oa-P8x"/>
@@ -136,7 +140,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Update Country"/>
                                 <connections>
-                                    <segue destination="nlU-49-7WL" kind="show" identifier="update" id="CVS-3l-VAU"/>
+                                    <segue destination="nlU-49-7WL" kind="presentation" identifier="update" modalPresentationStyle="fullScreen" id="CVS-3l-VAU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -147,12 +151,11 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="NameLabel" destination="mgg-kN-QFE" id="IGY-Qr-WAy"/>
+                        <outlet property="deleteButton" destination="IQn-7H-RX9" id="bvq-bD-u2V"/>
                         <outlet property="detailButton" destination="RyQ-z8-dby" id="wJ0-ba-6UD"/>
                         <outlet property="listOfStuffPicker" destination="08H-6V-Bfk" id="39M-fr-UyI"/>
                         <outlet property="segmentedPick" destination="lfF-Kh-oeN" id="47I-Og-4O8"/>
-
                         <outlet property="updateCountryButton" destination="hQO-AO-t3K" id="qjw-vl-a9Y"/>
-
                         <outletCollection property="descriptionlbls" destination="pAx-G0-Pe3" collectionClass="NSMutableArray" id="BQv-je-nUW"/>
                         <outletCollection property="descriptionlbls" destination="P3P-Bw-oe0" collectionClass="NSMutableArray" id="D3e-A5-Ikj"/>
                         <outletCollection property="descriptionlbls" destination="blM-3o-M53" collectionClass="NSMutableArray" id="V3g-d9-K64"/>
@@ -340,18 +343,23 @@
                                     <action selector="updateCountry:" destination="nlU-49-7WL" eventType="touchUpInside" id="2pg-q3-wXQ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QU1-mX-aPL">
-                                <rect key="frame" x="185" y="84" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPR-qJ-Q8X">
+                                <rect key="frame" x="-1" y="40" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="Whp-uO-8Sk">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="CsZ-iz-u0M">
+                                            <connections>
+                                                <segue destination="g9h-2u-Pot" kind="unwind" unwindAction="unwind:" id="TsD-eU-ng4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="boo-gr-f5V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="q1e-jh-w2b"/>
                     <connections>
                         <outlet property="countryActiveText" destination="cY2-UX-Sbg" id="dKN-vE-bKe"/>
                         <outlet property="countryAdd" destination="6Br-8r-yhd" id="slh-h2-F1d"/>
@@ -364,11 +372,12 @@
                         <outlet property="countryDeathsTodayText" destination="Gem-80-3BM" id="urM-FJ-jlg"/>
                         <outlet property="countryTestsPerMillionText" destination="76U-5b-UnL" id="SWY-8a-85t"/>
                         <outlet property="countryTestsText" destination="cOl-HN-emU" id="JEG-Hg-WjU"/>
-                        <outlet property="currentId" destination="QU1-mX-aPL" id="BsL-zM-UN3"/>
                         <outlet property="errorLabel" destination="17p-gf-zfp" id="tmr-KA-V2h"/>
+                        <outlet property="navbar" destination="RPR-qJ-Q8X" id="0mS-mh-gB9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MuT-Fs-vjs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="g9h-2u-Pot" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-471" y="910"/>
         </scene>
@@ -380,13 +389,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFO-wF-H16">
-                                <rect key="frame" x="20" y="44" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kvr-Hw-gIV">
                                 <rect key="frame" x="159" y="183" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -512,6 +514,19 @@
                                     <action selector="addCountry:" destination="hpD-sV-80a" eventType="touchUpInside" id="K60-5m-gBP"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbl-6H-KqH">
+                                <rect key="frame" x="0.0" y="29" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="XSI-rt-JzV">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="XE9-Cc-vnh">
+                                            <connections>
+                                                <segue destination="OZQ-0G-IIs" kind="unwind" unwindAction="unwind:" id="QYC-nJ-VgJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pUm-Qd-PLQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -532,8 +547,8 @@
                         <outlet property="countryTestsPerMillionText" destination="pj3-J0-YpP" id="4Cj-6n-HyY"/>
                         <outlet property="countryTestsText" destination="rqd-zW-lu1" id="iex-k3-usT"/>
                         <outlet property="deathsText" destination="gyn-Dt-lgv" id="Zkg-cD-hFi"/>
-                        <outlet property="headerLbl" destination="TFO-wF-H16" id="LA6-Xy-qJw"/>
                         <outlet property="idText" destination="Kvr-Hw-gIV" id="WXc-hr-QC9"/>
+                        <outlet property="navbar" destination="dbl-6H-KqH" id="c1J-Y4-Veo"/>
                         <outlet property="negIncText" destination="hOm-BV-EmB" id="IJV-Ld-UcD"/>
                         <outlet property="posIncText" destination="GuJ-iJ-VyT" id="gdv-yB-AaA"/>
                         <outlet property="stateAdd" destination="Ckl-ic-0xI" id="Sz2-HB-Fpg"/>
@@ -541,6 +556,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F21-eY-55u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="OZQ-0G-IIs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1073.913043478261" y="851.78571428571422"/>
         </scene>

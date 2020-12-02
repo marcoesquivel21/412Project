@@ -17,7 +17,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 //
 //    typealias StateStuff = [StateStuffElement]
     
-    @IBOutlet weak var updateCountry: UIButton!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var segmentedPick: UISegmentedControl!
     @IBOutlet weak var NameLabel: UILabel!
@@ -48,6 +49,42 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
          return displayList[row]
     }
+    
+    @IBAction func deleteCountryAction(_ sender: Any) {
+        var name = self.NameLabel.text!
+        name = name.trimmingCharacters(in: .whitespaces)
+                let urlAsString = "http://127.0.0.1:8080/deleteCountry/" + name
+
+                let url = URL(string: urlAsString)!
+                let urlSession = URLSession.shared
+
+                let jsonQuery = urlSession.dataTask(with: url, completionHandler: { data, response, error -> Void in
+                                   if (error != nil) {
+                               print(error!.localizedDescription)
+                                   }
+                    var err: NSError?
+                    //let decoder = JSONDecoder()
+                    //if data == nil{
+                    //}
+                    //let jsonResult = try! decoder.decode(CountryStuff.self, from: data!)
+                    //if (err != nil)
+                    //{
+                    //    print("Error JS(err!.localizedDescription)")
+                    //}
+
+                    DispatchQueue.main.async{
+                        self.countryList.removeAll()
+                        self.loadCountryDB()
+                    }
+
+
+
+                })
+                jsonQuery.resume()
+        
+        
+    }
+    
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //var tempObj = countryList.getCountryObject(item: row)
@@ -122,6 +159,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         self.listOfStuffPicker.delegate = self
         self.listOfStuffPicker.dataSource = self
+        displayList.removeAll()
+        countryList.removeAll()
+        stateList.removeAll()
+        dayStatList.removeAll()
         //self.countryList.addCountryObj(name: "USA BITCH")
         //print(countryList.getCount())
         reloadList()
@@ -153,6 +194,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
         }
     }
+    
+    
     
 //    func loadInAPI(){
 //        self.loadState()
@@ -473,12 +516,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
          */
     }
     
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        print("Value updated")
+        viewDidLoad()
+    }
+    
     @IBAction func segDidChange(_ sender: Any) {
         reloadList()
         for l in descriptionlbls{
             if segmentedPick.selectedSegmentIndex == 0{
                 detailButton.isHidden = true
-                updateCountry.isHidden = false
+                updateCountryButton.isHidden = false
+                deleteButton.isEnabled = true
                 print(l.tag)
                 switch l.tag {
                 case 0:
@@ -513,7 +562,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             else{
 //                print(l.tag)
                 detailButton.isHidden = false
-                updateCountry.isHidden = true
+                updateCountryButton.isHidden = true
+                deleteButton.isEnabled = false
                 switch l.tag {
                 case 0:
                     l.text = "Cases:  \(stateList[0].cases ?? 0)"

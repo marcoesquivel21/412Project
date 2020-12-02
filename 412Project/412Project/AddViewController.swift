@@ -10,6 +10,7 @@ import UIKit
 class AddViewController: UIViewController {
     var selectedVal:Int?
     
+    @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var idText: UITextField!
     @IBOutlet weak var casesText: UITextField!
     @IBOutlet weak var posIncText: UITextField!
@@ -18,7 +19,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var testsText: UITextField!
     @IBOutlet weak var stateAdd: UIButton!
     
-    @IBOutlet weak var headerLbl: UILabel!
+   
     
     @IBOutlet weak var countryIDText: UITextField!
     @IBOutlet weak var countryTestsText: UITextField!
@@ -37,7 +38,7 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if selectedVal == 0{
-            headerLbl.text = "Insert a Country"
+            navbar.topItem?.title = "Insert a Country"
             idText.isHidden = true
             casesText.isHidden = true
             posIncText.isHidden = true
@@ -47,7 +48,7 @@ class AddViewController: UIViewController {
             stateAdd.isHidden = true
         }
         else{
-            headerLbl.text = "Insert a State"
+            navbar.topItem?.title = "Insert a State"
             countryIDText.isHidden = true
             countryTestsText.isHidden = true
             countryDeathsText.isHidden = true
