@@ -30,6 +30,7 @@ class UpdateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentId.text = id
+        currentId.sizeToFit()
         if selectedVal == 1{
             errorLabel.text = "Please go back and select a country"
             countryTestsText.isHidden = true
@@ -55,7 +56,9 @@ class UpdateViewController: UIViewController {
     }
     
     func update(tests: String, deaths: String, casesMilli: String, cases: String, active: String, critical: String, deathsToday: String, deathsMilli: String, testsMilli:String, casesToday: String){
-        let url = URL(string: "http://127.0.0.1:8080/updateCountry/\(id)/\(tests)/\(deaths)/\(casesMilli)/\(deathsMilli)/\(active)/\(critical)/\(deathsToday)/\(testsMilli)/\(casesToday)/\(cases)")
+        self.id = id?.trimmingCharacters(in: .whitespaces)
+        
+        let url = URL(string: "http://127.0.0.1:8080/updateCountry/\(String(describing: id!))/\(tests)/\(deaths)/\(casesMilli)/\(deathsMilli)/\(active)/\(critical)/\(deathsToday)/\(testsMilli)/\(casesToday)/\(cases)")
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
 
