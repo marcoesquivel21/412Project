@@ -131,6 +131,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "add"){
+            if let viewController: AddViewController = segue.destination as? AddViewController {
+                viewController.selectedVal = segmentedPick.selectedSegmentIndex
+            }
+        }
+        if segue.identifier == "toDetail"{
+            if let vc = segue.destination as? StateDetailViewController{
+                vc.state = NameLabel.text
+            }
+        }
+    }
+    
 //    func loadInAPI(){
 //        self.loadState()
 //        self.loadCountry()
@@ -517,13 +531,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetail"{
-            if let vc = segue.destination as? StateDetailViewController{
-                vc.state = NameLabel.text
-            }
-        }
-    }
+    
     
 }
 

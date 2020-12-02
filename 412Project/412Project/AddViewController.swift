@@ -10,31 +10,75 @@ import UIKit
 class AddViewController: UIViewController {
     var selectedVal:Int?
     
+    @IBOutlet weak var idText: UITextField!
+    @IBOutlet weak var casesText: UITextField!
+    @IBOutlet weak var posIncText: UITextField!
+    @IBOutlet weak var negIncText: UITextField!
+    @IBOutlet weak var deathsText: UITextField!
+    @IBOutlet weak var testsText: UITextField!
+    @IBOutlet weak var stateAdd: UIButton!
     
     @IBOutlet weak var headerLbl: UILabel!
+    
+    @IBOutlet weak var countryIDText: UITextField!
+    @IBOutlet weak var countryTestsText: UITextField!
+    @IBOutlet weak var countryDeathsText: UITextField!
+    @IBOutlet weak var countryCasesPerMillionText: UITextField!
+    @IBOutlet weak var countryCasesText: UITextField!
+    @IBOutlet weak var countryActiveText: UITextField!
+    @IBOutlet weak var countryCriticalText: UITextField!
+    @IBOutlet weak var countryDeathsTodayText: UITextField!
+    @IBOutlet weak var countryDeathsPerMillionText: UITextField!
+    @IBOutlet weak var countryTestsPerMillionText: UITextField!
+    @IBOutlet weak var countryCasesTodayText: UITextField!
+    @IBOutlet weak var countryAdd: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if selectedVal == 0{
             headerLbl.text = "Insert a Country"
+            idText.isHidden = true
+            casesText.isHidden = true
+            posIncText.isHidden = true
+            negIncText.isHidden = true
+            deathsText.isHidden = true
+            testsText.isHidden = true
+            stateAdd.isHidden = true
         }
         else{
             headerLbl.text = "Insert a State"
+            countryIDText.isHidden = true
+            countryTestsText.isHidden = true
+            countryDeathsText.isHidden = true
+            countryCasesPerMillionText.isHidden = true
+            countryCasesText.isHidden = true
+            countryActiveText.isHidden = true
+            countryCriticalText.isHidden = true
+            countryDeathsTodayText.isHidden = true
+            countryDeathsPerMillionText.isHidden = true
+            countryTestsPerMillionText.isHidden = true
+            countryCasesTodayText.isHidden = true
+            countryAdd.isHidden = true
         }
         
-        insertCountry()
+        //insertCountry()
         //insertState()
         // Do any additional setup after loading the view.
     }
     
-    func insertCountry(){
-        var id = "MM"
-        var cases = 0
-        var positiveincrease = 0
-        var negativeincrease = 0
-        var deaths = 0
-        var tests = 0
+    @IBAction func add(_ sender: Any) {
+        insertState(id: idText.text!, cases: casesText.text ?? "0", posInc: posIncText.text ?? "0", negInc: negIncText.text ?? "0", deaths: deathsText.text ?? "0", tests: testsText.text ?? "0")
+    }
+    
+    @IBAction func addCountry(_ sender: Any) {
+        insertCountry(id: countryIDText.text!, tests: countryTestsText.text ?? "0", deaths: countryDeathsText.text ?? "0", casesMilli: countryCasesPerMillionText.text ?? "0", cases: countryCasesText.text ?? "0", active: countryActiveText.text ?? "0", critical: countryCriticalText.text ?? "0", deathsToday: countryDeathsTodayText.text ?? "0", deathsMilli: countryDeathsPerMillionText.text ?? "0", testsMilli: countryTestsPerMillionText.text ?? "0", casesToday: countryCasesTodayText.text ?? "0")
+    }
+    
+    func insertCountry(id: String, tests: String, deaths: String, casesMilli: String, cases: String, active: String, critical: String, deathsToday: String, deathsMilli: String, testsMilli:String, casesToday: String){
         
-        let url = URL(string: "http://127.0.0.1:8080/addCountry/Mooo/0/0/0/0/0/0/0/0/0/0")
+        
+        let url = URL(string: "http://127.0.0.1:8080/addCountry/\(id)/\(tests)/\(deaths)/\(casesMilli)/\(deathsMilli)/\(active)/\(critical)/\(deathsToday)/\(testsMilli)/\(casesToday)/\(cases)")
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
 
@@ -61,15 +105,9 @@ class AddViewController: UIViewController {
         task.resume()
     }
     
-    func insertState(){
-        var id = "MM"
-        var cases = 0
-        var positiveincrease = 0
-        var negativeincrease = 0
-        var deaths = 0
-        var tests = 0
+    func insertState(id: String, cases: String, posInc: String, negInc: String, deaths: String, tests: String){
         
-        let url = URL(string: "http://127.0.0.1:8080/addState/MM/0/0/0/0/0")
+        let url = URL(string: "http://127.0.0.1:8080/addState/\(id)/\(cases)/\(negInc)/\(posInc)/\(deaths)/\(tests)")
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
 
