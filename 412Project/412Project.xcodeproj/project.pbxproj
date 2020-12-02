@@ -14,6 +14,7 @@
 		56471F61256B4E9C00A8697B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56471F60256B4E9C00A8697B /* Assets.xcassets */; };
 		56471F64256B4E9C00A8697B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56471F62256B4E9C00A8697B /* LaunchScreen.storyboard */; };
 		56D40B782576FC510054B9E1 /* StateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D40B772576FC510054B9E1 /* StateDetailViewController.swift */; };
+		56D40B7D257740180054B9E1 /* StatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D40B7C257740180054B9E1 /* StatTableViewCell.swift */; };
 		CB20E9F4256B717F009E8FF8 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20E9F3256B717F009E8FF8 /* States.swift */; };
 		CB20E9F6256B718D009E8FF8 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20E9F5256B718D009E8FF8 /* Countries.swift */; };
 		CB20E9F8256B719C009E8FF8 /* DayStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20E9F7256B719C009E8FF8 /* DayStats.swift */; };
@@ -31,6 +32,7 @@
 		56471F63256B4E9C00A8697B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56471F65256B4E9C00A8697B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56D40B772576FC510054B9E1 /* StateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetailViewController.swift; sourceTree = "<group>"; };
+		56D40B7C257740180054B9E1 /* StatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTableViewCell.swift; sourceTree = "<group>"; };
 		CB20E9F3256B717F009E8FF8 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		CB20E9F5256B718D009E8FF8 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		CB20E9F7256B719C009E8FF8 /* DayStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStats.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				56D40B772576FC510054B9E1 /* StateDetailViewController.swift */,
 				CBB2B22A2575CC4800C3382D /* DataCollection.swift */,
 				56471F5D256B4E9B00A8697B /* Main.storyboard */,
+				56D40B7C257740180054B9E1 /* StatTableViewCell.swift */,
 				CBC3EB2B25770A80000EDB2B /* AddViewController.swift */,
 				56471F60256B4E9C00A8697B /* Assets.xcassets */,
 				56471F62256B4E9C00A8697B /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56471F5C256B4E9B00A8697B /* ViewController.swift in Sources */,
+				56D40B7D257740180054B9E1 /* StatTableViewCell.swift in Sources */,
 				56471F58256B4E9B00A8697B /* AppDelegate.swift in Sources */,
 				CBC3EB2C25770A80000EDB2B /* AddViewController.swift in Sources */,
 				56471F5A256B4E9B00A8697B /* SceneDelegate.swift in Sources */,

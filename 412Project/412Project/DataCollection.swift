@@ -34,7 +34,7 @@ struct DayStatStuffElement: Codable{
     public let date: String?
     public let id: String
     public let hospitalized: Int?
-    public let inIcuCumulative: Int?
+    public let inicu: Int?
     public let positive: Int?
     public let negative: Int?
 }

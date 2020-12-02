@@ -17,6 +17,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 //
 //    typealias StateStuff = [StateStuffElement]
     
+    @IBOutlet weak var updateCountry: UIButton!
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var segmentedPick: UISegmentedControl!
     @IBOutlet weak var NameLabel: UILabel!
@@ -307,7 +308,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 var s = jsonResult[index].id
                 //print(s)
                 var h = jsonResult[index].hospitalized
-                var icu = jsonResult[index].inIcuCumulative
+                var icu = jsonResult[index].inicu
                 var pos = jsonResult[index].positive
                 var neg = jsonResult[index].negative
 
@@ -469,6 +470,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         for l in descriptionlbls{
             if segmentedPick.selectedSegmentIndex == 0{
                 detailButton.isHidden = true
+                updateCountry.isHidden = false
                 print(l.tag)
                 switch l.tag {
                 case 0:
@@ -503,6 +505,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             else{
 //                print(l.tag)
                 detailButton.isHidden = false
+                updateCountry.isHidden = true
                 switch l.tag {
                 case 0:
                     l.text = "Cases:  \(stateList[0].cases ?? 0)"
