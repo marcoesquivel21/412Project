@@ -61,5 +61,11 @@ func routes(_ app: Application) throws {
             return tempCountry.create(on: req.db).map {tempCountry}
         }
     
+    app.get("daystats", ":ab") { req -> EventLoopFuture<[daystats]> in
+            let ab = req.parameters.get("ab") ?? "none"
+            let stats = daystats.query(on: req.db).filter(\.$id == ab).all()
+            return stats
+        }
+    
 
 }
