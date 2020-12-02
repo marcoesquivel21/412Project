@@ -22,7 +22,11 @@
                                 <items>
                                     <navigationItem id="4hB-5i-YFG">
                                         <barButtonItem key="leftBarButtonItem" title="Delete" id="IQn-7H-RX9"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Insert" id="N2W-oq-9qj"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Insert" id="N2W-oq-9qj">
+                                            <connections>
+                                                <segue destination="hpD-sV-80a" kind="presentation" id="Tsz-Oa-P8x"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -168,6 +172,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOn-El-SHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1074" y="139"/>
+        </scene>
+        <!--Add View Controller-->
+        <scene sceneID="nHz-Ya-d30">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="hpD-sV-80a" customClass="AddViewController" customModule="_12Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pf1-Qv-KgZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFO-wF-H16">
+                                <rect key="frame" x="20" y="44" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pUm-Qd-PLQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="headerLbl" destination="TFO-wF-H16" id="LA6-Xy-qJw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F21-eY-55u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073.913043478261" y="851.78571428571422"/>
         </scene>
     </scenes>
     <resources>

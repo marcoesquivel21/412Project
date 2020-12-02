@@ -14,7 +14,7 @@ final class state: Model, Content {
     
     static let schema = "state"
     
-    @ID(custom: "abbreviation", generatedBy: .database)
+    @ID(custom: "abbreviation", generatedBy: .user)
     var id: String?
 
     @Field(key: "cases")
