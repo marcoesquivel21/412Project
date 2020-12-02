@@ -18,6 +18,7 @@
 		CB20E9F6256B718D009E8FF8 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20E9F5256B718D009E8FF8 /* Countries.swift */; };
 		CB20E9F8256B719C009E8FF8 /* DayStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20E9F7256B719C009E8FF8 /* DayStats.swift */; };
 		CBB2B22B2575CC4800C3382D /* DataCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2B22A2575CC4800C3382D /* DataCollection.swift */; };
+		CBC3EB2C25770A80000EDB2B /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC3EB2B25770A80000EDB2B /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CB20E9F5256B718D009E8FF8 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		CB20E9F7256B719C009E8FF8 /* DayStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStats.swift; sourceTree = "<group>"; };
 		CBB2B22A2575CC4800C3382D /* DataCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollection.swift; sourceTree = "<group>"; };
+		CBC3EB2B25770A80000EDB2B /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				56D40B772576FC510054B9E1 /* StateDetailViewController.swift */,
 				CBB2B22A2575CC4800C3382D /* DataCollection.swift */,
 				56471F5D256B4E9B00A8697B /* Main.storyboard */,
+				CBC3EB2B25770A80000EDB2B /* AddViewController.swift */,
 				56471F60256B4E9C00A8697B /* Assets.xcassets */,
 				56471F62256B4E9C00A8697B /* LaunchScreen.storyboard */,
 				56471F65256B4E9C00A8697B /* Info.plist */,
@@ -154,6 +157,7 @@
 			files = (
 				56471F5C256B4E9B00A8697B /* ViewController.swift in Sources */,
 				56471F58256B4E9B00A8697B /* AppDelegate.swift in Sources */,
+				CBC3EB2C25770A80000EDB2B /* AddViewController.swift in Sources */,
 				56471F5A256B4E9B00A8697B /* SceneDelegate.swift in Sources */,
 				CB20E9F6256B718D009E8FF8 /* Countries.swift in Sources */,
 				CB20E9F8256B719C009E8FF8 /* DayStats.swift in Sources */,
