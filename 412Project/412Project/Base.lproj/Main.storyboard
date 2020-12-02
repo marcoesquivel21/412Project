@@ -23,7 +23,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Delete" id="IQn-7H-RX9"/>
                                         <barButtonItem key="rightBarButtonItem" title="Insert" id="N2W-oq-9qj">
                                             <connections>
-                                                <segue destination="hpD-sV-80a" kind="presentation" identifier="add" id="Tsz-Oa-P8x"/>
+                                                <segue destination="hpD-sV-80a" kind="show" identifier="add" id="Tsz-Oa-P8x"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -441,6 +441,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="pUm-Qd-PLQ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="KqK-BF-v8p"/>
                     <connections>
                         <outlet property="casesText" destination="gvG-WI-LQu" id="vUC-bU-Gk9"/>
                         <outlet property="countryActiveText" destination="Fch-11-QFq" id="zhG-Zc-jA4"/>
