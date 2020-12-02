@@ -1,4 +1,6 @@
 import Vapor
+import Fluent
+import FluentPostgresDriver
 
 func routes(_ app: Application) throws {
     
@@ -14,10 +16,13 @@ func routes(_ app: Application) throws {
         daystats.query(on: req.db).all()
     }
     
-//    app.post("addState") { req -> EventLoopFuture<state> in
-//        let stateIn = try req.content.decode(state.self)
-//        return stateIn.create(on: req.db).map {stateIn}
-//    }
+    app.get("deleteCountry", ":name") {req -> String in country.query(on: req.db)
+        .filter(\.$id == req.parameters.get("name") ?? "invalid")
+        .delete()
+        return req.parameters.get("name") ?? "invalid"
+    }
+    
+    
     
     app.post("addState" , ":ab", ":cases", ":negInc", ":posInc", ":deaths", ":tests") { req -> EventLoopFuture<state> in
             let ab = req.parameters.get("ab") ?? "invalid"
@@ -56,8 +61,5 @@ func routes(_ app: Application) throws {
             return tempCountry.create(on: req.db).map {tempCountry}
         }
     
-//    app.post("addCountry") { req -> EventLoopFuture<country> in
-//        let countryIn = try req.content.decode(country.self)
-//        return countryIn.create(on: req.db).map {countryIn}
-//    }
+
 }
