@@ -24,6 +24,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var listOfStuffPicker: UIPickerView!
     
     @IBOutlet var descriptionlbls: [UILabel]!
+    @IBOutlet weak var updateCountryButton: UIButton!
     
     var curIndex:Int = 0
     
@@ -88,6 +89,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
             else{
 //                print(l.tag)
+                updateCountryButton.isHidden = true
                 switch l.tag {
                 case 0:
                     l.text = "Cases:  \(stateList[row].cases ?? 0)"
@@ -142,6 +144,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if segue.identifier == "toDetail"{
             if let vc = segue.destination as? StateDetailViewController{
                 vc.state = NameLabel.text
+            }
+        }
+        if(segue.identifier == "update"){
+            if let viewController: UpdateViewController = segue.destination as? UpdateViewController {
+                viewController.selectedVal = segmentedPick.selectedSegmentIndex
+                viewController.id = NameLabel.text
             }
         }
     }

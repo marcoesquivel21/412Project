@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B1B2F2E25773DAB007BE6D5 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B2F2D25773DAB007BE6D5 /* UpdateViewController.swift */; };
 		56471F58256B4E9B00A8697B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56471F57256B4E9B00A8697B /* AppDelegate.swift */; };
 		56471F5A256B4E9B00A8697B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56471F59256B4E9B00A8697B /* SceneDelegate.swift */; };
 		56471F5C256B4E9B00A8697B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56471F5B256B4E9B00A8697B /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B1B2F2D25773DAB007BE6D5 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
 		56471F54256B4E9B00A8697B /* 412Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 412Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56471F57256B4E9B00A8697B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56471F59256B4E9B00A8697B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +81,11 @@
 				56D40B772576FC510054B9E1 /* StateDetailViewController.swift */,
 				CBB2B22A2575CC4800C3382D /* DataCollection.swift */,
 				56471F5D256B4E9B00A8697B /* Main.storyboard */,
+
 				56D40B7C257740180054B9E1 /* StatTableViewCell.swift */,
+
+				3B1B2F2D25773DAB007BE6D5 /* UpdateViewController.swift */,
+
 				CBC3EB2B25770A80000EDB2B /* AddViewController.swift */,
 				56471F60256B4E9C00A8697B /* Assets.xcassets */,
 				56471F62256B4E9C00A8697B /* LaunchScreen.storyboard */,
@@ -168,6 +174,7 @@
 				56D40B782576FC510054B9E1 /* StateDetailViewController.swift in Sources */,
 				CB20E9F4256B717F009E8FF8 /* States.swift in Sources */,
 				CBB2B22B2575CC4800C3382D /* DataCollection.swift in Sources */,
+				3B1B2F2E25773DAB007BE6D5 /* UpdateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

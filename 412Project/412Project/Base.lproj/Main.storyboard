@@ -25,7 +25,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Delete" id="IQn-7H-RX9"/>
                                         <barButtonItem key="rightBarButtonItem" title="Insert" id="N2W-oq-9qj">
                                             <connections>
-                                                <segue destination="hpD-sV-80a" kind="presentation" identifier="add" id="Tsz-Oa-P8x"/>
+                                                <segue destination="hpD-sV-80a" kind="show" identifier="add" id="Tsz-Oa-P8x"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -132,9 +132,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQO-AO-t3K">
-                                <rect key="frame" x="153" y="693" width="109" height="30"/>
+                                <rect key="frame" x="153" y="724" width="109" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Update Country"/>
+                                <connections>
+                                    <segue destination="nlU-49-7WL" kind="show" identifier="update" id="CVS-3l-VAU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U4p-5Y-R42"/>
@@ -147,7 +150,9 @@
                         <outlet property="detailButton" destination="RyQ-z8-dby" id="wJ0-ba-6UD"/>
                         <outlet property="listOfStuffPicker" destination="08H-6V-Bfk" id="39M-fr-UyI"/>
                         <outlet property="segmentedPick" destination="lfF-Kh-oeN" id="47I-Og-4O8"/>
-                        <outlet property="updateCountry" destination="hQO-AO-t3K" id="lq9-Pg-XWH"/>
+
+                        <outlet property="updateCountryButton" destination="hQO-AO-t3K" id="qjw-vl-a9Y"/>
+
                         <outletCollection property="descriptionlbls" destination="pAx-G0-Pe3" collectionClass="NSMutableArray" id="BQv-je-nUW"/>
                         <outletCollection property="descriptionlbls" destination="P3P-Bw-oe0" collectionClass="NSMutableArray" id="D3e-A5-Ikj"/>
                         <outletCollection property="descriptionlbls" destination="blM-3o-M53" collectionClass="NSMutableArray" id="V3g-d9-K64"/>
@@ -251,10 +256,126 @@
             </objects>
             <point key="canvasLocation" x="1073.913043478261" y="138.61607142857142"/>
         </scene>
+        <!--Update View Controller-->
+        <scene sceneID="AxK-YF-S2V">
+            <objects>
+                <viewController id="nlU-49-7WL" customClass="UpdateViewController" customModule="_12Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u38-zG-HOw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If no data availble enter 0 for values or data will not be added to DB" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17p-gf-zfp">
+                                <rect key="frame" x="54" y="113" width="305" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tests" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cOl-HN-emU">
+                                <rect key="frame" x="159" y="223" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deaths" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZnF-cM-9Uj">
+                                <rect key="frame" x="159" y="265" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cases/Million" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WeM-9g-5Wv">
+                                <rect key="frame" x="159" y="307" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cases" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5S-Hi-DXh">
+                                <rect key="frame" x="159" y="349" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Active" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cY2-UX-Sbg">
+                                <rect key="frame" x="159" y="389" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Critical" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfC-wT-fkJ">
+                                <rect key="frame" x="159" y="433" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deaths Today" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gem-80-3BM">
+                                <rect key="frame" x="159" y="475" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deaths/Milli" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ebn-8X-NOV">
+                                <rect key="frame" x="159" y="517" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tests/Milli" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76U-5b-UnL">
+                                <rect key="frame" x="159" y="559" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cases Today" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qYr-tx-D3R">
+                                <rect key="frame" x="159" y="601" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Br-8r-yhd">
+                                <rect key="frame" x="182" y="643" width="51" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="addCountry:" destination="hpD-sV-80a" eventType="touchUpInside" id="yuJ-vt-7nL"/>
+                                    <action selector="updateCountry:" destination="nlU-49-7WL" eventType="touchUpInside" id="2pg-q3-wXQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QU1-mX-aPL">
+                                <rect key="frame" x="185" y="84" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="boo-gr-f5V"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="q1e-jh-w2b"/>
+                    <connections>
+                        <outlet property="countryActiveText" destination="cY2-UX-Sbg" id="dKN-vE-bKe"/>
+                        <outlet property="countryAdd" destination="6Br-8r-yhd" id="slh-h2-F1d"/>
+                        <outlet property="countryCasesPerMillionText" destination="WeM-9g-5Wv" id="AaL-U6-fcw"/>
+                        <outlet property="countryCasesText" destination="f5S-Hi-DXh" id="N5C-oW-5Dn"/>
+                        <outlet property="countryCasesTodayText" destination="qYr-tx-D3R" id="LK6-Eo-6Dv"/>
+                        <outlet property="countryCriticalText" destination="bfC-wT-fkJ" id="WMA-C6-ZGV"/>
+                        <outlet property="countryDeathsPerMillionText" destination="ebn-8X-NOV" id="MBa-1w-fJZ"/>
+                        <outlet property="countryDeathsText" destination="ZnF-cM-9Uj" id="e0K-oJ-fVa"/>
+                        <outlet property="countryDeathsTodayText" destination="Gem-80-3BM" id="urM-FJ-jlg"/>
+                        <outlet property="countryTestsPerMillionText" destination="76U-5b-UnL" id="SWY-8a-85t"/>
+                        <outlet property="countryTestsText" destination="cOl-HN-emU" id="JEG-Hg-WjU"/>
+                        <outlet property="currentId" destination="QU1-mX-aPL" id="BsL-zM-UN3"/>
+                        <outlet property="errorLabel" destination="17p-gf-zfp" id="tmr-KA-V2h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MuT-Fs-vjs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-471" y="910"/>
+        </scene>
         <!--Add View Controller-->
         <scene sceneID="nHz-Ya-d30">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="hpD-sV-80a" customClass="AddViewController" customModule="_12Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="hpD-sV-80a" customClass="AddViewController" customModule="_12Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pf1-Qv-KgZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -395,6 +516,7 @@
                         <viewLayoutGuide key="safeArea" id="pUm-Qd-PLQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="KqK-BF-v8p"/>
                     <connections>
                         <outlet property="casesText" destination="gvG-WI-LQu" id="vUC-bU-Gk9"/>
                         <outlet property="countryActiveText" destination="Fch-11-QFq" id="zhG-Zc-jA4"/>
